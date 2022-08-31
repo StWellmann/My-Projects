@@ -4,10 +4,115 @@ SELECT * FROM tabelle WHERE age > 21
 
 SELECT * FROM tabelle WHERE city = ‘Mainz’
 
-SELECT DISTINCT
-● Gibt nur unterschiedliche Einträge aus
-● SELECT DISTINCT firstname FROM customers
-○ Gibt jeden Vornamen maximal einmal aus
-● SELECT DISTINCT firstname, lastname FROM customers
-○ Gibt jede Kombination von Vor- und Nachnamen nur
-1x aus
+SELECT … WHERE firstname LIKE ‘a%’
+SELECT … WHERE firstname LIKE ‘%a%’
+SELECT … WHERE email LIKE ‘%@gmail.com’
+
+WHERE firstname IN (‘Anne’, ‘Hartmut’, ‘Jutta’)
+
+OFFSET 40 LIMIT 20
+
+UPPER(spalte)
+LOWER(spalte)
+
+Wie lang ist der Text in der Spalte?
+LENGTH(spalte): 
+
+Ermittle einen Teil vom Text:
+SUBSTR(spalte, pos, len):
+
+Hängt Textbausteine aneinander:
+CONCAT(spalte1, spalte2,...)
+
+INSERT INTO tabelle (spalte1, spalte2, …)
+VALUES (wert1, wert2, …),
+(wert1, wert2, …);
+
+UPDATE tabelle
+ SET spalte1=’Wert1’, spalte2=’Wert2’
+ WHERE …
+ 
+ DELETE FROM tabelle1
+ WHERE …
+ 
+ CREATE TABLE name (
+spalte1 datatype,
+spalte2 datatype
+)
+CREATE TABLE t (
+num_books INT NOT NULL DEFAULT 0
+)
+CREATE TABLE t (
+ id SERIAL PRIMARY KEY,
+ ...
+)
+
+
+Tabelle entfernen:
+DROP TABLE table
+
+Spalte entfernen:
+ALTER TABLE table DROP COLUMN column
+
+Spalte hinzufügen:
+ALTER TABLE table ADD COLUMN column datatype [BEFORE
+/ AFTER] column2
+
+Spalte verändern:
+ALTER TABLE table MODIFY COLUMN column datatype
+
+Sub Select:
+SELECT
+(SELECT ...) [AS something]
+FROM tabelle
+
+Cross Join:
+SELECT * FROM A CROSS JOIN B WHERE BEDINGUNG
+Hier wird zuerst das kartesische Produkt gebildet, anschließend wird gefiltert nach BEDINGUNG
+
+INNER JOIN:
+SELECT * FROM A INNER JOIN B ON BEDINGUNG
+Hier wird nicht das komplette kartesische Produkt aufgebaut
+=> Tendenziell performanter
+
+
+SELECT … FROM … GROUP BY firstname
+SELECT COUNT(*), title FROM customers GROUP BY title
+SELECT … FROM tabelle
+(LEFT JOIN / INNER JOIN / RIGHT JOIN / …)
+WHERE …
+GROUP BY …
+HAVING … 
+
+
+CURRENT_TIMESTAMP, LOCALTIMESTAMP:
+Gibt die aktuelle Uhrzeit aus
+DATE_PART(part, timestamp): Gibt einen Teil vom Datum aus z.B. das Jahr, den Monat,...+
+Mit Datumswerten rechnen:
+SELECT timestamp ‘2020-01-01 00:00:00’ - timestamp ‘2019-08-20 00:00:00’
+SELECT timestamp ‘2019-01-01 00:00:00’ + interval ‘2days’
+
+
+Fremdschlüssel:
+CREATE TABLE orders (
+ …
+ customer_id bigint,
+ FOREIGN KEY (customer_id) REFERENCES customers(id)
+)
+Nachträglich:
+ALTER TABLE orders ADD FOREIGN KEY (customer_id)
+REFERENCES customers(id)
+
+ALTER TABLE orders ADD FOREIGN KEY (customer_id)
+REFERENCES customers(id) ON UPDATE RESTRICT
+Hiermit wird verboten, dass in der Tabelle customers die id nachträglich geändert wird (wenn es eine Bestellung von dem Kunden gibt)
+
+
+START TRANSACTION
+UPDATE …;
+COMMIT
+
+Nachträglich eine Transaktion abbrechen
+START TRANSACTION
+UPDATE …;
+○ ROLLBACK
