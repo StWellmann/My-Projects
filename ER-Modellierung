@@ -1,0 +1,20 @@
+Aufgabenstellung:
+Die IT-Beratungsfirma KnowHow bietet Schulungen zu unterschiedlichen IT-Themen an. Um das Schulungsangebot besser verwalten zu können, soll ein Datenbankschema erstellt werden.
+Bitte erstellen Sie ein Entity-Relationship-Modell anhand der Informationen, die bei der Anforderungsanalyse erhoben wurden:
+
+1) Es werden Schulungen zu unterschiedlichen Themen angeboten. Die einzelnen Schulungen zu einem Thema finden mehrfach im Jahr statt (z.B. Informatica 8.6 im Frühjahr, Sommer und
+Herbst).
+
+2) Jedes Schulungsthema kann von mehreren Referenten unterrichtet werden. Ein Referent unterrichtet gewöhnlich mehrere Schulungsthemen. 
+Für jedes Thema ist genau ein Referent inhaltlich verantwortlich.
+
+3) Ein Referent kann mehrere Schulungen durchführen. Eine bestimmte Schulung wird nur von einem Referenten geleitet.
+
+4) Für jede Schulung können sich maximal bis zu 20 Teilnehmer anmelden. Ein Teilnehmer kann sich für mehrere Schulungen entscheiden.
+
+5) Schulungsthemen sollen von Teilnehmern in einer vorgegebenen Sequenz belegt werden:
+Einerseits können einem bestimmten Schulungsthema mehrere andere Schulungsthemen folgen. 
+Andererseits erfordert unter Umständen ein bestimmtes Schulungsthema zwingend die Belegung anderer Themen als Voraussetzung.
+
+6) Je nach Schulungsthema müssen Seminarräume gebucht werden, die über eine entsprechende
+Ausstattung (Beamer, Computer etc.) verfügen.
