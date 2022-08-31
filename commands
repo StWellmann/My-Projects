@@ -1,0 +1,13 @@
+SELECT * FROM tabelle WHERE bedingung
+
+SELECT * FROM tabelle WHERE age > 21
+
+SELECT * FROM tabelle WHERE city = ‘Mainz’
+
+SELECT DISTINCT
+● Gibt nur unterschiedliche Einträge aus
+● SELECT DISTINCT firstname FROM customers
+○ Gibt jeden Vornamen maximal einmal aus
+● SELECT DISTINCT firstname, lastname FROM customers
+○ Gibt jede Kombination von Vor- und Nachnamen nur
+1x aus
