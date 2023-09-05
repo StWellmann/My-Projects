@@ -1,3 +1,4 @@
+
 SELECT * FROM tabelle WHERE bedingung
 
 SELECT * FROM tabelle WHERE age > 21
